@@ -7,7 +7,73 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="calculator">
+        <div class="calculator-container">
+            <div class="top-menu-bar">
+                <ul class="top-menu-list">
+                    <li class="top-menu-item">Edit</li>
+                    <li class="top-menu-item">View</li>
+                    <li class="top-menu-item">Help</li>
+                </ul>
+            </div>
+            
+            <div class="calculator-body">
+                <div class="display-container">
+                    <span id="display"></span>
+                </div>
+                <div class="buttons-grid">
+                    <div class="top-row">
+                        <div class="square-indent">
+
+                        </div>
+                        <button>Backspace</button>
+                        <button>CE</button>
+                        <button>C</button>
+                    </div>
+                    <div class="bottom-grid">
+                        <div class="left-column">
+                            <button>MC</button>
+                            <button>MR</button>
+                            <button>MS</button>
+                            <button>M+</button>
+                        </div>
+
+                        <div class="main-buttons-grid">
+                            <button class="number-btn" value=7>7</button>
+                            <button class="number-btn" value=8>8</button>
+                            <button class="number-btn" value=9>9</button>
+                            <button class="number-btn" value='/'>/</button>
+
+                            <button class="non-working">sqrt</button>
+
+                            <button class="number-btn" value=4>4</button>
+                            <button class="number-btn" value=5>5</button>
+                            <button class="number-btn" value=6>6</button>
+
+                            <button id="multiply-btn" value="*">*</button>
+
+                            <button class="non-working">%</button>
+
+                            <button class="number-btn" value=1>1</button>
+                            <button class="number-btn" value=2>2</button>
+                            <button class="number-btn" value=3>3</button>
+
+                            <button id="subtract-btn" value="-">-</button>
+
+                            <button class="non-working">1/x</button>
+
+                            <button class="number-btn" id="zero" value=0>0</button>
+
+                            <button id="multiply-by-minus-one">+/-</button>
+                            <button id="decimal-dot" value=".">.</button>
+                            <button id="sum-btn" value="+">+</button>
+                            <button id="operate-btn">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
