@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="calculator">
+        <img id="calc-border" src="img/calcborder.png" alt="">
         <div class="calculator-container">
             <div class="top-menu-bar">
                 <ul class="top-menu-list">
@@ -19,7 +20,9 @@
             
             <div class="calculator-body">
                 <div class="display-container">
-                    <span id="display"></span>
+                    <div id="display">
+                        <span id="number-display">0.</span>
+                    </div>
                 </div>
                 <div class="buttons-grid">
                     <div class="top-row">
@@ -32,42 +35,42 @@
                     </div>
                     <div class="bottom-grid">
                         <div class="left-column">
-                            <button>MC</button>
-                            <button>MR</button>
-                            <button>MS</button>
-                            <button>M+</button>
+                            <button class="regular-btn-width">MC</button>
+                            <button class="regular-btn-width">MR</button>
+                            <button class="regular-btn-width">MS</button>
+                            <button class="regular-btn-width">M+</button>
                         </div>
 
                         <div class="main-buttons-grid">
-                            <button class="number-btn" value=7>7</button>
-                            <button class="number-btn" value=8>8</button>
-                            <button class="number-btn" value=9>9</button>
-                            <button class="number-btn" value='/'>/</button>
+                            <button class="number-btn regular-btn-width" value=7>7</button>
+                            <button class="number-btn regular-btn-width" value=8>8</button>
+                            <button class="number-btn regular-btn-width" value=9>9</button>
+                            <button class="operator regular-btn-width" value='/'>/</button>
 
-                            <button class="non-working">sqrt</button>
+                            <button class="other-blue regular-btn-width" class="non-working">sqrt</button>
 
-                            <button class="number-btn" value=4>4</button>
-                            <button class="number-btn" value=5>5</button>
-                            <button class="number-btn" value=6>6</button>
+                            <button class="number-btn regular-btn-width" value=4>4</button>
+                            <button class="number-btn regular-btn-width" value=5>5</button>
+                            <button class="number-btn regular-btn-width" value=6>6</button>
 
-                            <button id="multiply-btn" value="*">*</button>
+                            <button class="operator regular-btn-width" id="multiply-btn" value="*">*</button>
 
-                            <button class="non-working">%</button>
+                            <button class="other-blue regular-btn-width" class="non-working">%</button>
 
-                            <button class="number-btn" value=1>1</button>
-                            <button class="number-btn" value=2>2</button>
-                            <button class="number-btn" value=3>3</button>
+                            <button class="number-btn regular-btn-width" value=1>1</button>
+                            <button class="number-btn regular-btn-width" value=2>2</button>
+                            <button class="number-btn regular-btn-width" value=3>3</button>
 
-                            <button id="subtract-btn" value="-">-</button>
+                            <button class="operator regular-btn-width" id="subtract-btn" value="-">-</button>
 
-                            <button class="non-working">1/x</button>
+                            <button class="other-blue regular-btn-width" class="non-working">1/x</button>
 
-                            <button class="number-btn" id="zero" value=0>0</button>
+                            <button class="number-btn regular-btn-width" id="zero" value=0>0</button>
 
-                            <button id="multiply-by-minus-one">+/-</button>
-                            <button id="decimal-dot" value=".">.</button>
-                            <button id="sum-btn" value="+">+</button>
-                            <button id="operate-btn">=</button>
+                            <button class="other-blue regular-btn-width" id="multiply-by-minus-one">+/-</button>
+                            <button class="other-blue regular-btn-width" id="decimal-dot" value=".">.</button>
+                            <button class="operator regular-btn-width" id="sum-btn" value="+">+</button>
+                            <button class="operator regular-btn-width" id="operate-btn">=</button>
                         </div>
                     </div>
                 </div>

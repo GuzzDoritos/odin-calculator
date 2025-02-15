@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Tahoma XP';
+    src: url(windows-xp-tahoma.ttf)
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tahoma XP';
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 260px;
+    height: 260px;
+    contain: layout;
+}
+
+.calculator-container {
+    height: 228px;
+    width: 254px;
+    background-color: #ece9d8;
+    position: absolute;
+    top: 29px;
+    left: 3px;
+}
+
+.top-menu-bar {
+    height: 20px;
+    border-bottom: 1px solid white;
+}
+
+.top-menu-list {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+    padding-top: 2px;
+    padding-left: 6px;
+    font-size: 16px;
+}
+
+.display-container {
+    height: 38px;
+}
+
+#display {
+    height: 23px;
+    background-color: white;
+    margin: 0px 8px;
+    margin-top: 2px;
+    border: 1px solid #7f9db9;
+    text-align: right;
+    padding: 1px 6px;
+}
+
+#number-display {
+    font-size: 18px;
+}
+
+button {
+    height: 27px;
+    font-size: 16px;
+    text-align: center;
+    background: rgb(214,208,197);
+    background: linear-gradient(0deg, rgba(214,208,197,1) 0%, rgba(243,242,238,1) 12%, rgba(251,251,249,1) 25%, rgba(255,255,255,1) 83%);
+    border: 1px solid #003c74;
+    border-radius: 3px;
+}
+
+button:hover {
+    box-shadow: inset 0 0 0 2px #e59700;
+}
+
+button:active {
+    background: rgb(242,241,238);
+    background: linear-gradient(0deg, rgba(242,241,238,1) 0%, rgba(242,241,238,1) 4%, rgba(230,228,222,1) 13%, rgba(216,213,203,1) 79%, rgba(212,208,197,1) 89%, rgba(209,204,193,1) 92%, rgba(209,204,193,1) 96%, rgba(209,204,193,1) 100%);
+    box-shadow: none;
+}
+
+.top-row {
+    display: flex;
+    margin-bottom: 9px;
+}
+
+.square-indent {
+    width: 27px;
+    height: 27px;
+    border: 2px inset;
+    margin-right: 16px;
+    margin-left: 12px;
+}
+
+.top-row > button {
+    width: 61px;
+    margin-right: 5px;
+    color: red;
+}
+
+.bottom-grid {
+    display: flex;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 9px;
+    margin-right: 12px;
+}
+
+.left-column > button, .operator {
+    color: red;
+}
+
+
+.main-buttons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 5px;
+}
+
+
+.number-btn, .other-blue {
+    color: blue;
+}
+
+
+.regular-btn-width {
+    width: 34px;
+}
