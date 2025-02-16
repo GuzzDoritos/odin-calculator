@@ -1,5 +1,6 @@
 const numberBtn = document.querySelectorAll(".number-btn");
 const operatorBtn = document.querySelectorAll(".operator")
+const decimalBtn = document.querySelector("#decimal-dot")
 const resultBtn = document.querySelector("#operate-btn")
 const clearBtn = document.querySelector("#clear");
 
@@ -21,10 +22,13 @@ let operator = "";
 
 const add = (a, b) => 
     a + b;
+
 const subtract = (a, b) => 
     a - b;
+
 const multiply = (a, b) => 
     a * b;
+
 const divide = (a, b) => {
     if (b !== 0) {
         return a / b
@@ -53,6 +57,7 @@ const clear = () => {
     isSecondNum = false;
     isDone = false;
     isCalcStopped = false;
+    isDecimal = false;
     firstNum = null;
     secondNum = null;
     result = 0;
@@ -62,9 +67,8 @@ const clear = () => {
     debug("CLEAR PRESSED");
 }
 
-const updateDisplay = (num, decimal = false) => {
-    if (decimal) numberDisplay.textContent = num;
-    else numberDisplay.textContent = num + ".";
+const updateDisplay = (num) => {
+    numberDisplay.textContent = num + ".";
 }
 
 operatorBtn.forEach((btn) => {
@@ -84,19 +88,22 @@ operatorBtn.forEach((btn) => {
             if (isCalcStopped) return;
             firstNum = result;
             secondNum = null;
-            updateDisplay(result, isDecimal)
+            updateDisplay(result)
             isDone = true;
             operator = btn.value;
+            isDecimal = false;
         } else if (isSecondNum && isDone) {
             isDone = false;
             firstNum = result;
             result = 0;
             secondNum = null;
             operator = btn.value;
+            isDecimal = false;
         } else if (isFirstNum) {
             isFirstNum = false;
             isSecondNum = true;
             operator = btn.value;
+            isDecimal = false;
         }
         debug("OPERATOR PRESSED");
     })
@@ -106,6 +113,7 @@ resultBtn.addEventListener("click", () => {
     if (isCalcStopped) {
         return;
     }
+
     if (isFirstNum || secondNum == null) {
         return;
     } else if (isSecondNum && !isDone) {
@@ -114,8 +122,9 @@ resultBtn.addEventListener("click", () => {
         secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
         if (isCalcStopped) return;
-        updateDisplay(result, isDecimal)
+        updateDisplay(result)
         isDone = true;
+        isDecimal = false;
     } else if (isSecondNum && isDone) {
         firstNum = result;
         result = 0;        
@@ -123,8 +132,8 @@ resultBtn.addEventListener("click", () => {
         secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
         if (isCalcStopped) return;
-        updateDisplay(result, isDecimal)
-        updateDisplay(result, isDecimal)
+        updateDisplay(result)
+        isDecimal = false;
     }
     debug("RESULT PRESSED");
 })
@@ -145,12 +154,29 @@ numberBtn.forEach((btn) => {
             updateDisplay(secondNum);
         } else {
             isFirstNum = true;
-            if (firstNum === null) {firstNum = ""; numberDisplay.textContent = ""}
+            if (firstNum === null) {firstNum = ""}
             firstNum += btn.value;
             updateDisplay(firstNum);
         }
         debug("NUMBER PRESSED");
     })
+})
+
+decimalBtn.addEventListener("click", () => {
+    if (isCalcStopped) {
+        return;
+    }
+
+    if (isDecimal) return;
+    
+    if (firstNum === null && !isFirstNum) {isFirstNum = true; firstNum = "0."} else
+    if (isFirstNum) firstNum += ".";
+
+    if (secondNum === null && isSecondNum) {return} else
+    if (isSecondNum) secondNum += ".";
+
+    isDecimal = true;
+    debug("DECIMAL ENABLED")
 })
 
 clearBtn.addEventListener("click", () => {
@@ -183,6 +209,7 @@ function debug(button) {
         secondNum: secondNum,
         isSecondNum: isSecondNum,
         operator: operator,
+        isDecimal: isDecimal,
         result: result,
         isDone: isDone,
     }
