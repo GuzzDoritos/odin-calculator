@@ -16,7 +16,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(img/bliss.jpg);
+    background-color: black;
+}
+
+.window {
+    width: 800px;
+    height: 600px;
+    background-image: url(img/bliss.jpeg);
+    background-size: 800px 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator {
