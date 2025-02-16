@@ -99,8 +99,12 @@ resultBtn.addEventListener("click", () => {
         updateDisplay(result, isDecimal)
         isDone = true;
     } else if (isSecondNum && isDone) {
-        firstNum = null;
-        result += secondNum;
+        firstNum = result;
+        result = 0;        
+        firstNum = parseFloat(firstNum);
+        secondNum = parseFloat(secondNum);
+        result += operate(operator, firstNum, secondNum);
+        updateDisplay(result, isDecimal)
         updateDisplay(result, isDecimal)
     }
     debug("RESULT PRESSED");
