@@ -53,8 +53,8 @@ const clear = () => {
 
 operatorBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-        operator = btn.value;
         if (isSecondNum && secondNum == null) {
+            operator = btn.value;
             return;
         }
         if (isSecondNum && !isDone) {
@@ -66,14 +66,17 @@ operatorBtn.forEach((btn) => {
             secondNum = null;
             numberDisplay.textContent = result;
             isDone = true;
+            operator = btn.value;
         } else if (isSecondNum && isDone) {
             isDone = false;
             firstNum = result;
             result = 0;
             secondNum = null;
+            operator = btn.value;
         } else if (isFirstNum) {
             isFirstNum = false;
             isSecondNum = true;
+            operator = btn.value;
         }
         debug("OPERATOR PRESSED");
     })
