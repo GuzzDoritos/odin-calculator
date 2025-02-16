@@ -67,8 +67,8 @@ operatorBtn.forEach((btn) => {
             return;
         }
         if (isSecondNum && !isDone) {
-            firstNum = parseInt(firstNum);
-            secondNum = parseInt(secondNum);
+            firstNum = parseFloat(firstNum);
+            secondNum = parseFloat(secondNum);
             result += operate(operator, firstNum, secondNum);
             firstNum = result;
             secondNum = null;
@@ -91,9 +91,9 @@ resultBtn.addEventListener("click", () => {
     if (isFirstNum) {
         return;
     } else if (isSecondNum && !isDone) {
-        if (result !== 0) {result += parseInt(secondNum); numberDisplay.textContent = result; return}        
-        firstNum = parseInt(firstNum);
-        secondNum = parseInt(secondNum);
+        if (result !== 0) {result += parseFloat(secondNum); numberDisplay.textContent = result; return}        
+        firstNum = parseFloat(firstNum);
+        secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
         numberDisplay.textContent = result;
         isDone = true;
