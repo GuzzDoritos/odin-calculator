@@ -13,6 +13,8 @@ let isFirstNum = false;
 let isSecondNum = false;
 let isDone = false;
 
+let isCalcStopped = false;
+
 let isDecimal = false;
 
 let operator = "";
@@ -23,8 +25,15 @@ const subtract = (a, b) =>
     a - b;
 const multiply = (a, b) => 
     a * b;
-const divide = (a, b) => 
-    b !== 0 ? a / b : "Can't divide by 0";
+const divide = (a, b) => {
+    if (b !== 0) {
+        return a / b
+    } else {
+        updateDisplay("Can't divide by zero");
+        isCalcStopped = true;
+        return;
+    }
+}
 
 const operate = (operator, a, b) => {
     switch (operator) {
@@ -43,6 +52,7 @@ const clear = () => {
     isFirstNum = false;
     isSecondNum = false;
     isDone = false;
+    isCalcStopped = false;
     firstNum = null;
     secondNum = null;
     result = 0;
@@ -59,6 +69,9 @@ const updateDisplay = (num, decimal = false) => {
 
 operatorBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
+        if (isCalcStopped) {
+            return;
+        }
         if (isSecondNum && secondNum == null) {
             operator = btn.value;
             return;
@@ -68,6 +81,7 @@ operatorBtn.forEach((btn) => {
             firstNum = parseFloat(firstNum);
             secondNum = parseFloat(secondNum);
             result += operate(operator, firstNum, secondNum);
+            if (isCalcStopped) return;
             firstNum = result;
             secondNum = null;
             updateDisplay(result, isDecimal)
@@ -89,6 +103,9 @@ operatorBtn.forEach((btn) => {
 })
 
 resultBtn.addEventListener("click", () => {
+    if (isCalcStopped) {
+        return;
+    }
     if (isFirstNum || secondNum == null) {
         return;
     } else if (isSecondNum && !isDone) {
@@ -96,6 +113,7 @@ resultBtn.addEventListener("click", () => {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
+        if (isCalcStopped) return;
         updateDisplay(result, isDecimal)
         isDone = true;
     } else if (isSecondNum && isDone) {
@@ -104,6 +122,7 @@ resultBtn.addEventListener("click", () => {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
+        if (isCalcStopped) return;
         updateDisplay(result, isDecimal)
         updateDisplay(result, isDecimal)
     }
@@ -112,6 +131,9 @@ resultBtn.addEventListener("click", () => {
 
 numberBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
+        if (isCalcStopped) {
+            return;
+        }
         if (isDone && secondNum !== null) {
             clear();
         }
