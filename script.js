@@ -13,7 +13,6 @@ let isFirstNum = false;
 let isSecondNum = false;
 let isDone = false;
 
-let currentNum = 0;
 let operator = "";
 
 const add = (a, b) => 
@@ -56,7 +55,6 @@ function debug(button) {
     console.log("secondNum: " + secondNum);
     console.log("isSecondNum: " + isSecondNum);
     console.log("result: " + result);
-    console.log("currentNum: " + currentNum);
     console.log("isDone: " + isDone)
     console.log("------------------------")
 
