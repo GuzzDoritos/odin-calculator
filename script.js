@@ -46,19 +46,10 @@ const clear = () => {
     result = 0;
     operator = "";
     numberDisplay.textContent = "0.";
+
+    debug("CLEAR PRESSED");
 }
 
-function debug(button) {
-    console.log("--" + button + "--")
-    console.log("firstNum: " + firstNum);
-    console.log("isFirstNum: " + isFirstNum);
-    console.log("secondNum: " + secondNum);
-    console.log("isSecondNum: " + isSecondNum);
-    console.log("result: " + result);
-    console.log("isDone: " + isDone)
-    console.log("------------------------")
-
-}
 
 operatorBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -129,3 +120,42 @@ numberBtn.forEach((btn) => {
 clearBtn.addEventListener("click", () => {
     clear();
 })
+
+
+// DEBUG //
+
+const debugDiv = document.createElement("div");
+document.body.appendChild(debugDiv);
+
+debugDiv.style = `
+width: 300px;
+overflow: hidden;
+font-size: 1.5em;
+margin-left: 10px;
+
+`
+
+function debug(button) {
+    debugDiv.innerHTML = "";
+    const debugList = document.createElement("ul");
+    const buttonMessage = document.createElement("h3");
+    buttonMessage.textContent = button;
+    debugList.appendChild(buttonMessage);
+    const variables = {
+        firstNum: firstNum,
+        isFirstNum: isFirstNum,
+        secondNum: secondNum,
+        isSecondNum: isSecondNum,
+        operator: operator,
+        result: result,
+        isDone: isDone,
+    }
+    for (const prop in variables) {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `<span style="color: red">${prop}</span>: ${variables[prop]}`
+        debugList.appendChild(listItem);
+    }
+
+    debugDiv.appendChild(debugList);
+}
+
