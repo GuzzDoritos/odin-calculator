@@ -13,6 +13,8 @@ let isFirstNum = false;
 let isSecondNum = false;
 let isDone = false;
 
+let isDecimal = false;
+
 let operator = "";
 
 const add = (a, b) => 
@@ -50,6 +52,10 @@ const clear = () => {
     debug("CLEAR PRESSED");
 }
 
+const updateDisplay = (num, decimal = false) => {
+    if (decimal) numberDisplay.textContent = num;
+    else numberDisplay.textContent = num + ".";
+}
 
 operatorBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -64,7 +70,7 @@ operatorBtn.forEach((btn) => {
             result += operate(operator, firstNum, secondNum);
             firstNum = result;
             secondNum = null;
-            numberDisplay.textContent = result;
+            updateDisplay(result, isDecimal)
             isDone = true;
             operator = btn.value;
         } else if (isSecondNum && isDone) {
@@ -90,12 +96,12 @@ resultBtn.addEventListener("click", () => {
         firstNum = parseFloat(firstNum);
         secondNum = parseFloat(secondNum);
         result += operate(operator, firstNum, secondNum);
-        numberDisplay.textContent = result;
+        updateDisplay(result, isDecimal)
         isDone = true;
     } else if (isSecondNum && isDone) {
         firstNum = null;
         result += secondNum;
-        numberDisplay.textContent = result;
+        updateDisplay(result, isDecimal)
     }
     debug("RESULT PRESSED");
 })
@@ -107,15 +113,15 @@ numberBtn.forEach((btn) => {
         }
         if (isSecondNum && !isFirstNum){
             isDone = false;
-            numberDisplay.textContent = ""
-            if (secondNum === null) {secondNum = ""; numberDisplay.textContent = ""}
+            updateDisplay("")
+            if (secondNum === null) {secondNum = ""}
             secondNum += btn.value;
-            numberDisplay.textContent = secondNum;
+            updateDisplay(secondNum);
         } else {
             isFirstNum = true;
             if (firstNum === null) {firstNum = ""; numberDisplay.textContent = ""}
             firstNum += btn.value;
-            numberDisplay.textContent = firstNum;
+            updateDisplay(firstNum);
         }
         debug("NUMBER PRESSED");
     })
